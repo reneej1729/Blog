@@ -3,22 +3,32 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Controllers;
 
-public class PostController : ControllerBase
+// TODO: add in authentication
+[ApiController]
+[Route("[controller]")]
+public class BlogController : ControllerBase
 {
     private readonly BlogContext _blogContext;
 
-    public PostController(BlogContext blogContext)
+    public BlogController(BlogContext blogContext)
 	{
         _blogContext = blogContext;
         // TODO: add in logging
     }
 
 	[HttpGet]
-	public ActionResult<IEnumerable<BlogPost>> Get()
+	public IEnumerable<BlogPost> Get()
 	{
 		// TODO: Add paging
 		return _blogContext.BlogPosts;
 	}
+
+	[HttpGet("{id}")]
+	public BlogPost? Get(int id)
+    {
+		var post = _blogContext.BlogPosts.FirstOrDefault(post => post.Id == id);
+        return post;
+    }
 
 	[HttpPost]
 	public void Post([FromBody] BlogPost blogPost)
