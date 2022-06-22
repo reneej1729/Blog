@@ -1,9 +1,10 @@
 ﻿import React from 'react';
 import BlogList from './BlogList';
+import { BlogPost } from '../global/types';
 import useFetch from './useFetch';
 
 const BlogHome = () => {
-    const { data: blogs, isPending, error } = useFetch('blog');
+    const { data: blogs, isPending, error } = useFetch<BlogPost[]>('blog');
 
     return (
         <div className="blog-home">
