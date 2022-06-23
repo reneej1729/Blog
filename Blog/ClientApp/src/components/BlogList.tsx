@@ -13,7 +13,7 @@ const BlogList = ({blogs, title}: BlogListProps) => {
             <h2>{title}</h2>
             {blogs && blogs.length > 0 && blogs.map(blog => (
                 <div className="blog-preview" key={blog.id}>
-                    <Link to={`/blogs/${blog.id}`}>
+                    <Link to={`/posts/${blog.id}`}>
                         <h2>{blog.title}</h2>
                     </Link>
                     <p>{blog.summary}</p>

@@ -9,7 +9,7 @@ type BlogDetailParam = {
 
 const BlogDetails = () => {
     const { id } = useParams<BlogDetailParam>();
-    const { data: blog, isPending, error } = useFetch<BlogPost>('/blogs' + id);
+    const { data: blog, isPending, error } = useFetch<BlogPost>('/blog/' + id);
     const history = useHistory();
 
     const handleClick = () => {
@@ -25,7 +25,7 @@ const BlogDetails = () => {
             {error && <div>{error}</div>}
             {blog && <article>
                 <h2>{blog.title}</h2>
-                <p>Written by {blog.author}</p>
+                <p>Written by {blog.author.name}</p>
                 <div>{blog.body}</div>
                 <button onClick={handleClick}>Delete</button>
             </article>}

@@ -1,6 +1,7 @@
 ﻿using Blog.Models;
 using Blog.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Controllers;
 
@@ -28,7 +29,9 @@ public class BlogController : ControllerBase
 	public BlogPost? Get(int id)
 	{
 		// TODO: Make blog post repository
-		var post = _blogContext.BlogPosts.FirstOrDefault(post => post.Id == id);
+		var post = _blogContext.BlogPosts
+			.Include(post => post.Author)
+			.FirstOrDefault(post => post.Id == id);
         return post;
     }
 
