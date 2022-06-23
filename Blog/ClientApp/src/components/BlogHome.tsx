@@ -6,6 +6,7 @@ import useFetch from './useFetch';
 const BlogHome = () => {
     const { data: blogs, isPending, error } = useFetch<BlogPost[]>('blog');
 
+    // TODO: Fix colors/styling here
     return (
         <div className="blog-home">
             {error && <div>{error} </div>}

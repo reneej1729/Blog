@@ -29,6 +29,7 @@ export class NavMenu extends Component {
     });
   }
 
+  // TODO: Remove boilerplate and add blog nav
   render() {
     return (
       <header>

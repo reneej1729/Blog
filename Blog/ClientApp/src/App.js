@@ -13,6 +13,7 @@ import './custom.css';
 export default class App extends Component {
   static displayName = App.name;
 
+  // TODO: Add About page
   render() {
     return (
       <Layout>

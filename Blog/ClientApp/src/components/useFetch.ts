@@ -5,6 +5,7 @@ const useFetch = <T>(url: RequestInfo) => {
     const [isPending, setIsPending] = useState(true);
     const [error, setError] = useState(null);
 
+    // TODO: use async/await instead of promise/then
     useEffect(() => {
         const abortCont = new AbortController();
 

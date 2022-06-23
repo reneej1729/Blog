@@ -13,6 +13,7 @@ const BlogDetails = () => {
     const history = useHistory();
 
     const handleClick = () => {
+        // TODO: update to use useFetch for these calls
         fetch(new Request('/blogs' + id, { method: 'delete' })
         ).then(() => {
             history.push('/');
