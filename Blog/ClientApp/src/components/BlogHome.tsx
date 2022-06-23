@@ -8,9 +8,11 @@ const BlogHome = () => {
 
     return (
         <div className="blog-home">
-            <BlogList blogs={blogs} title="All Posts"/>
             {error && <div>{error} </div>}
-            {isPending && <div>Loading...</div>}
+            {isPending || (blogs === undefined)
+                ? <div>Loading...</div>
+                : <BlogList blogs={blogs} title="All Posts"/>
+            }
         </div>
     );
 };

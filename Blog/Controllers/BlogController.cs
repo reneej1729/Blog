@@ -1,4 +1,5 @@
 ﻿using Blog.Models;
+using Blog.Models.Requests;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Blog.Controllers;
@@ -25,15 +26,23 @@ public class BlogController : ControllerBase
 
 	[HttpGet("{id}")]
 	public BlogPost? Get(int id)
-    {
+	{
+		// TODO: Make blog post repository
 		var post = _blogContext.BlogPosts.FirstOrDefault(post => post.Id == id);
         return post;
     }
 
 	[HttpPost]
-	public void Post([FromBody] BlogPost blogPost)
+	public void Post([FromBody] CreateBlogPostRequest blogPostRequest)
 	{
-		// TODO: Make blog post repository
+		var blogPost = new BlogPost
+		{
+			Author = _blogContext.Authors.OrderBy(post => post.Id).Last(),
+			Title = blogPostRequest.Title,
+			Summary = blogPostRequest.Summary,
+			Body = blogPostRequest.Body
+		};
+
 		_blogContext.BlogPosts.Add(blogPost);
 		_blogContext.SaveChanges();
 	}

@@ -19,5 +19,5 @@ public class BlogPost
     [Required]
 	public Author Author { get; set; } = default!;
 
-	public string[] Tags { get; set; } = default!;
+	public string[]? Tags { get; set; }
 }

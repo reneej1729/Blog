@@ -24,9 +24,9 @@ const BlogDetails = () => {
             {isPending && <div>Loading ...</div>}
             {error && <div>{error}</div>}
             {blog && <article>
-                <h2>{blog.Title}</h2>
-                <p>Written by {blog.Author}</p>
-                <div>{blog.Body}</div>
+                <h2>{blog.title}</h2>
+                <p>Written by {blog.author}</p>
+                <div>{blog.body}</div>
                 <button onClick={handleClick}>Delete</button>
             </article>}
         </div>
